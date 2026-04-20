@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* Tailwind v4 dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base theme */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+/* Dark mode */
+.dark body {
+  background: #020617;
+  color: #e2e8f0;
+}
+
+/* =========================
+   Autofill Fix (IMPORTANT)
+========================= */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #0f172a !important;
+  transition: background-color 9999s ease-in-out 0s;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  caret-color: #0f172a !important;
+}
+
+/* Dark autofill */
+.dark input:-webkit-autofill {
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  caret-color: #ffffff !important;
+}
+
+/* Remove weird input shadows */
+input {
+  box-shadow: none !important;
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* =========================
+   Reusable Components
+========================= */
+@layer components {
+  /* Input (premium glass style) */
+  .input {
+    @apply w-full px-4 py-3 rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-md text-slate-900 outline-none transition;
+  }
+
+  .input::placeholder {
+    @apply text-slate-400;
+  }
+
+  .input:focus {
+    @apply border-blue-600 ring-4 ring-blue-100;
+  }
+
+  .dark .input {
+    @apply border-slate-700 bg-slate-800/80 text-white;
+  }
+
+  .dark .input:focus {
+    @apply border-blue-500 ring-blue-500/10;
+  }
+
+  /* Button (premium gradient) */
+  .btn {
+    @apply w-full px-6 py-3 rounded-2xl font-semibold text-white 
+    bg-[linear-gradient(135deg,#0f172a_0%,#1e3a8a_100%)]
+    shadow-[0_12px_30px_rgba(30,58,138,0.25)]
+    transition duration-300;
+  }
+
+  .btn:hover {
+    @apply -translate-y-0.5 
+    shadow-[0_18px_40px_rgba(30,58,138,0.35)];
+  }
+
+  .btn:disabled {
+    @apply opacity-70 cursor-not-allowed;
+  }
+
+  .dark .btn {
+    @apply bg-[linear-gradient(135deg,#ffffff_0%,#cbd5e1_100%)] text-slate-900;
+  }
+}
