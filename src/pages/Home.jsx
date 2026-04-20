@@ -6,7 +6,7 @@ import SkillsPreview from "../components/sections/SkillsPreview";
 import ProjectsPreview from "../components/sections/ProjectsPreview";
 import ContactPreview from "../components/sections/ContactPreview";
 import { getPortfolio } from "../api/portfolioApi";
-import { getProjects } from "../../../Backend/src/api/projectApi";
+import { getProjects } from "../api/projectApi";
 
 const Home = () => {
   const [portfolio, setPortfolio] = useState(null);
