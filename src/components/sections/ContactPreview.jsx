@@ -74,14 +74,11 @@ const ContactPreview = ({ portfolio }) => {
       id="contact"
       className="relative overflow-hidden px-4 py-10 sm:px-6 sm:py-12 lg:px-8"
     >
-      {/* OUTER GLOW BACKDROP */}
       <div className="relative mx-auto max-w-6xl rounded-[36px] border border-slate-300/70 bg-white/40 p-5 shadow-[0_30px_90px_rgba(15,23,42,0.12)] backdrop-blur-3xl dark:border-slate-800/40 dark:bg-slate-950/30">
 
-        {/* SOFT BLUE SIDE GLOW */}
+        {/* GLOWS */}
         <div className="pointer-events-none absolute inset-y-0 left-[-80px] w-[220px] bg-blue-500/20 blur-[120px]" />
         <div className="pointer-events-none absolute inset-y-0 right-[-80px] w-[220px] bg-cyan-400/20 blur-[120px]" />
-
-        {/* TOP GLOW */}
         <div className="pointer-events-none absolute -top-20 left-1/2 h-40 w-96 -translate-x-1/2 bg-sky-400/10 blur-[120px]" />
 
         <div className="mx-auto max-w-5xl">
@@ -89,61 +86,60 @@ const ContactPreview = ({ portfolio }) => {
           {/* TITLE */}
           <div className="mb-6 flex justify-center">
             <div className="relative inline-flex items-center rounded-full border border-slate-300/70 bg-white/60 px-4 py-1.5 text-[17px] font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-md backdrop-blur-xl dark:border-white/10 dark:bg-white/10 dark:text-slate-300">
-
-              <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/20 via-transparent to-cyan-400/20 blur-md" />
+              <span className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/20 via-transparent to-cyan-400/20 blur-md" />
               <span className="relative z-10">Contact</span>
             </div>
           </div>
 
-          <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="grid gap-4 lg:grid-cols-[0.60fr_0.60fr]">
 
-            {/* LEFT BOX */}
-            <div className="rounded-[28px] border border-slate-300/80 bg-white/40 p-4 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-2xl transition-all duration-300 hover:shadow-[0_25px_80px_rgba(59,130,246,0.15)] dark:border-white/10 dark:bg-white/5 sm:p-5">
+            {/* LEFT BOX (COMPACT VERSION) */}
+            <div className="rounded-[28px] border border-slate-300/80 bg-white/40 p-3 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-2xl transition-all duration-300 hover:shadow-[0_25px_80px_rgba(59,130,246,0.15)] dark:border-white/10 dark:bg-white/5 sm:p-6">
 
-              <div className="grid gap-3">
+              <div className="grid gap-2.5">
+
                 {infoItems.map((item) =>
                   item.href ? (
                     <a
                       key={item.key}
                       href={item.href}
-                      className="group flex items-start gap-4 rounded-2xl border border-slate-300/80 bg-white/50 p-4 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-blue-300/40 hover:bg-white/30 hover:shadow-[0_10px_40px_rgba(59,130,246,0.25)] dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+                      className="group flex items-center gap-3 rounded-2xl border border-slate-300/70 bg-white/50 px-3 py-2.5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-300/40 hover:bg-white/30 hover:shadow-[0_8px_25px_rgba(59,130,246,0.18)] dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
                     >
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-900/90 text-white shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-blue-400/40 dark:bg-white dark:text-slate-900">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-900/90 text-white transition-all duration-300 group-hover:scale-105 dark:bg-white dark:text-slate-900">
                         {item.icon}
                       </div>
 
-                      <div className="min-w-0 flex-1">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+                      <div className="min-w-0 flex-1 leading-tight">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-slate-500 dark:text-slate-400">
                           {item.label}
                         </p>
-                        <p className="mt-1.5 break-all text-sm font-medium text-slate-800 transition-all duration-300 group-hover:text-blue-600 dark:text-slate-200 dark:group-hover:text-white">
+                        <p className="mt-0.5 truncate text-sm font-medium text-slate-800 dark:text-slate-200">
                           {item.value}
                         </p>
                       </div>
                     </a>
                   ) : (
-                    <div
-                      className="flex items-start gap-4 rounded-2xl border border-slate-300/80 bg-white/50 p-4 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-blue-300/40 hover:bg-white/30 hover:shadow-[0_10px_40px_rgba(59,130,246,0.25)] dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
-                    >
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-900/90 text-white shadow-md transition-all duration-300 group-hover:scale-110 dark:bg-white dark:text-slate-900">
+                    <div className="flex items-center gap-3 rounded-2xl border border-slate-300/70 bg-white/50 px-3 py-2.5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-300/40 hover:bg-white/30 hover:shadow-[0_8px_25px_rgba(59,130,246,0.18)] dark:border-white/10 dark:bg-white/5">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-900/90 text-white dark:bg-white dark:text-slate-900">
                         {item.icon}
                       </div>
 
-                      <div className="min-w-0 flex-1">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+                      <div className="min-w-0 flex-1 leading-tight">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-slate-500 dark:text-slate-400">
                           {item.label}
                         </p>
-                        <p className="mt-1.5 text-sm font-medium text-slate-800 dark:text-slate-200">
+                        <p className="mt-0.5 text-sm font-medium text-slate-800 dark:text-slate-200">
                           {item.value}
                         </p>
                       </div>
                     </div>
                   )
                 )}
+
               </div>
             </div>
 
-            {/* RIGHT BOX */}
+            {/* RIGHT BOX (UNCHANGED) */}
             <div className="relative overflow-hidden rounded-[28px] border border-slate-300/80 bg-white/30 p-5 backdrop-blur-2xl shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition-all duration-300 hover:shadow-[0_25px_90px_rgba(34,211,238,0.18)] dark:border-white/10 dark:bg-white/5">
 
               <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-blue-400/20 blur-3xl" />

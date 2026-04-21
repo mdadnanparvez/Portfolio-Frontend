@@ -17,7 +17,7 @@ const SkillsPreview = ({ portfolio }) => {
   const SectionTitle = ({ children }) => (
     <div className="mb-9 flex justify-center">
       <div className="relative inline-flex items-center rounded-full border border-slate-300/80 bg-white/70 px-5 py-1.5 text-s font-semibold uppercase tracking-[0.25em] text-slate-700 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-white/10 dark:text-slate-300">
-        <span className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/15 via-transparent to-cyan-400/15 blur-md" />
+        <span className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/10 via-transparent to-cyan-400/10 blur-md" />
         <span className="relative">{children}</span>
       </div>
     </div>
@@ -33,6 +33,7 @@ const SkillsPreview = ({ portfolio }) => {
         </div>
 
         <div className="relative mx-auto max-w-7xl rounded-[36px] border border-slate-300/80 bg-white/50 p-5 shadow-[0_35px_100px_rgba(15,23,42,0.10)] backdrop-blur-3xl dark:border-slate-800/60 dark:bg-slate-950/30">
+          
           {/* ================= SKILLS ================= */}
           {hasSkills && (
             <div className="mb-10">
@@ -43,21 +44,52 @@ const SkillsPreview = ({ portfolio }) => {
                   {portfolio.skills.map((skill, index) => (
                     <div
                       key={index}
-                      className="rounded-3xl border border-slate-300/70 bg-white/70 p-6 dark:border-slate-700/50 dark:bg-slate-900/40"
+                      className="
+                        group relative overflow-hidden rounded-3xl
+                        border border-slate-300/70
+                        bg-white/70 p-6
+                        transition-all duration-400 ease-out
+                        hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgba(59,130,246,0.12)]
+                        dark:border-slate-700/50 dark:bg-slate-900/40
+                      "
                     >
-                      <h3 className="mb-4 text-base font-semibold text-slate-900 dark:text-white">
-                        {skill.category}
-                      </h3>
+                      {/* SOFT GLOW */}
+                      <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-400 group-hover:opacity-100">
+                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/10 via-transparent to-cyan-400/10 blur-lg" />
+                      </div>
 
-                      <div className="flex flex-wrap gap-2.5">
-                        {skill.items?.map((item, i) => (
-                          <span
-                            key={i}
-                            className="rounded-full border border-slate-300/70 bg-white/80 px-3 py-1 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
-                          >
-                            {item}
-                          </span>
-                        ))}
+                      {/* SUBTLE BORDER EFFECT */}
+                      <div className="absolute inset-0 rounded-3xl border border-transparent group-hover:border-blue-300/30 transition-all duration-400" />
+
+                      {/* CONTENT */}
+                      <div className="relative z-10">
+                        <h3 className="mb-4 text-base font-semibold text-slate-900 dark:text-white">
+                          {skill.category}
+                        </h3>
+
+                        <div className="flex flex-wrap gap-2.5">
+                          {skill.items?.map((item, i) => (
+                            <span
+                              key={i}
+                              className="
+                                rounded-full border border-slate-300/70
+                                bg-white/80 px-3 py-1 text-sm
+                                text-slate-700
+                                transition-all duration-300
+                                group-hover:border-blue-200/60 group-hover:bg-blue-50/60
+                                dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300
+                                dark:group-hover:bg-slate-800/70
+                              "
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* VERY LIGHT SHIMMER */}
+                      <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100">
+                        <div className="absolute -left-1/2 top-0 h-full w-1/3 rotate-12 bg-white/10 blur-lg transition-all duration-700 group-hover:left-full" />
                       </div>
                     </div>
                   ))}
@@ -114,9 +146,6 @@ const SkillsPreview = ({ portfolio }) => {
                           </p>
                         )}
                       </div>
-
-                      {/* RIGHT VIEW ICON */}
-                      
                     </div>
                   ))}
                 </div>
